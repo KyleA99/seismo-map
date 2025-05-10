@@ -4,11 +4,10 @@
  */
 async function fetchEarthquakeData() {
     try {
-        const baseUrl = "https://eathquake.usgs.gov/fdsnws/event/1/query?format=geojson&eventtype=earthquake";
+        const baseUrl = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&eventtype=earthquake";
 
         const response = await fetch(baseUrl);
         const data = await response.json();
-
         console.log(data);
 
         return data;
