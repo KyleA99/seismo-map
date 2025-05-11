@@ -2,8 +2,10 @@
   "name": "seismo-map",
   "version": "1.0.0",
   "description": "SeismoMap is a web application that fetches live earthquake data from the USGS API, stores it in a PostgreSQL database, and presents it to users through a dynamic and interactive frontend.",
+  "type": "module",
   "main": "index.js",
   "scripts": {
+    "start": "node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
