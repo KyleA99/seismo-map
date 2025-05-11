@@ -10,8 +10,6 @@ async function fetchEarthquakeData() {
 
         const response = await fetch(baseUrl);
         const data = await response.json();
-        console.log(data);
-
         return data;
     } catch (error) {
         console.error("Error fetching earthquake data:", error.message);
