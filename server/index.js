@@ -7,7 +7,7 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use('/', earthquakeRoutes);
+app.use('/earthquakes', earthquakeRoutes);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
