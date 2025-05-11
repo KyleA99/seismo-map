@@ -5,4 +5,3 @@ SeismoMap is a web application that fetches live earthquake data from the USGS A
 This application requires the following modules:
 
 - [Node.js](https://nodejs.org/en)
-    * Note: Node.js Version v18.0.0+ is required to utilize the fetch API without needing to import any modules.

@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 /**
  * Queries earthquake data from the USGS endpoint.
  * @returns {Object} The earthquake data from the USGS API.
@@ -11,10 +13,10 @@ async function fetchEarthquakeData() {
         console.log(data);
 
         return data;
-    } catch(error) {
+    } catch (error) {
         console.error("Error fetching earthquake data:", error.message);
         throw error;
     }
 }
 
-fetchEarthquakeData();
+export default fetchEarthquakeData;

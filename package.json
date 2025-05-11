@@ -1,0 +1,25 @@
+{
+  "name": "seismo-map",
+  "version": "1.0.0",
+  "description": "SeismoMap is a web application that fetches live earthquake data from the USGS API, stores it in a PostgreSQL database, and presents it to users through a dynamic and interactive frontend.",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KyleA99/seismo-map.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KyleA99/seismo-map/issues"
+  },
+  "homepage": "https://github.com/KyleA99/seismo-map#readme",
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  }
+}
