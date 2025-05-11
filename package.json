@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/KyleA99/seismo-map#readme",
   "dependencies": {
+    "express": "^5.1.0",
     "node-fetch": "^3.3.2"
   }
 }
