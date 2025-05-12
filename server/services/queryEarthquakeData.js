@@ -12,31 +12,12 @@ async function fetchEarthquakeData(params = {}) {
         // Base URL with appended static query parameters
         let queryString = `${baseUrl}?format=geojson&eventtype=earthquake`
 
-        // Add filters to the query string based on query parameters
-        if (params.starttime) {
-            queryString += `&starttime=${params.starttime}`;
-        }
-        if (params.endtime) {
-            queryString += `&endtime=${params.endtime}`;
-        }
-        if (params.latitude && params.longitude) {
-            queryString += `&latitude=${params.latitude}&longitude=${params.longitude}`;
-        }
-        if (params.maxradiuskm) {
-            queryString += `&maxradiuskm=${params.maxradiuskm}`;
-        }
-        if (params.minmagnitude) {
-            queryString += `&minmagnitude=${params.minmagnitude}`;
-        }
-        if (params.maxmagnitude) {
-            queryString += `&maxmagnitude=${params.maxmagnitude}`;
-        }
-        if (params.limit) {
-            queryString += `&limit=${params.limit}`;
-        }
-        if (params.orderby) {
-            queryString += `&orderby=${params.orderby}`;
-        }
+        // Append optional query params
+        Object.keys(params).forEach(key => {
+            if (params[key]) {
+                queryString += `&${key}=${params[key]}`;
+            }
+        });
 
         const response = await fetch(queryString);
         const data = await response.json();
