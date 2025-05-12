@@ -2,13 +2,43 @@ import fetch from 'node-fetch';
 
 /**
  * Queries earthquake data from the USGS endpoint and transforms it from geojson to json.
+ * @param {Object} params - The query parameters to filter the earthquake data.
  * @returns {Array} Transformed earthquake data with specific properties.
  */
-async function fetchEarthquakeData() {
+async function fetchEarthquakeData(params = {}) {
     try {
-        const baseUrl = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&eventtype=earthquake";
+        const baseUrl = "https://earthquake.usgs.gov/fdsnws/event/1/query";
 
-        const response = await fetch(baseUrl);
+        // Base URL with appended static query parameters
+        let queryString = `${baseUrl}?format=geojson&eventtype=earthquake`
+
+        // Add filters to the query string based on query parameters
+        if (params.starttime) {
+            queryString += `&starttime=${params.starttime}`;
+        }
+        if (params.endtime) {
+            queryString += `&endtime=${params.endtime}`;
+        }
+        if (params.latitude && params.longitude) {
+            queryString += `&latitude=${params.latitude}&longitude=${params.longitude}`;
+        }
+        if (params.maxradiuskm) {
+            queryString += `&maxradiuskm=${params.maxradiuskm}`;
+        }
+        if (params.minmagnitude) {
+            queryString += `&minmagnitude=${params.minmagnitude}`;
+        }
+        if (params.maxmagnitude) {
+            queryString += `&maxmagnitude=${params.maxmagnitude}`;
+        }
+        if (params.limit) {
+            queryString += `&limit=${params.limit}`;
+        }
+        if (params.orderby) {
+            queryString += `&orderby=${params.orderby}`;
+        }
+
+        const response = await fetch(queryString);
         const data = await response.json();
 
         // Transform the data to match the swagger schema
@@ -18,8 +48,6 @@ async function fetchEarthquakeData() {
             location: feature.properties.place,
             depth: feature.geometry.coordinates[2],
             time: new Date(feature.properties.time).toISOString()
-
-            // we want other properties too: maxradius (or maxradiuskm), maxdepth, minmagnitude, maxmagnitude, orderby...
         }));
 
         return transformedData;
