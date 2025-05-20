@@ -5,7 +5,7 @@ import fetch from 'node-fetch';
  * @param {Object} params - The query parameters to filter the earthquake data.
  * @returns {Array} Transformed earthquake data with specific properties.
  */
-async function fetchEarthquakeData(params = {}) {
+export async function fetchEarthquakeData(params = {}) {
     try {
         const baseUrl = "https://earthquake.usgs.gov/fdsnws/event/1/query";
 
@@ -37,5 +37,3 @@ async function fetchEarthquakeData(params = {}) {
         throw error;
     }
 }
-
-export default fetchEarthquakeData;
