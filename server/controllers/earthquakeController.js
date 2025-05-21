@@ -13,3 +13,18 @@ export async function getEarthquakeData(req, res) {
         });
     }
 }
+
+
+
+export async function queryInitData(res) {
+    try {
+        const data = await queryInitializeEarthquakeData();
+        res.json(data);
+    } catch (error) {
+        console.error('Error fetching init data:', error);
+        res.status(500).json({
+            error: 'Failed to fetch earthquake data',
+            details: error.message
+        });
+    }
+}
