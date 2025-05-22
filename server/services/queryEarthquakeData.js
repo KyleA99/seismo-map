@@ -1,9 +1,9 @@
 import fetch from 'node-fetch';
 
 /**
- * Queries earthquake data from the USGS endpoint and transforms it from geojson to json.
+ * Queries earthquake data from the USGS endpoint and returns select properties.
  * @param {Object} params - The query parameters to filter the earthquake data.
- * @returns {Array} Transformed earthquake data with specific properties.
+ * @returns {Array} Transformed/filtered earthquake data.
  */
 export async function fetchEarthquakeData(params = {}) {
     try {
@@ -22,7 +22,7 @@ export async function fetchEarthquakeData(params = {}) {
         const response = await fetch(queryString);
         const data = await response.json();
 
-        // Transform the data to match the swagger schema
+        // Filter for specified properties
         const transformedData = data.features.map(feature => ({
             id: feature.id,
             magnitude: feature.properties.mag,
