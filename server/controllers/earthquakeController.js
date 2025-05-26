@@ -1,4 +1,4 @@
-import { fetchEarthquakeData } from '../services/queryEarthquakeData.js';
+import { fetchEarthquakeData } from '../services/earthquakes/queryEarthquakeData.js';
 
 export async function getEarthquakeData(req, res) {
     try {

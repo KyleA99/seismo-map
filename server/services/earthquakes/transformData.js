@@ -1,4 +1,3 @@
-
 /**
  * Filters USGS earthquake data and maps it to standard properties.
  * @param {Object} data - The unsanitized data queried from the USGS endpoint.

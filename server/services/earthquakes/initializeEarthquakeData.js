@@ -1,4 +1,4 @@
-import { fetchEarthquakeData } from '../services/queryEarthquakeData.js';
+import { fetchEarthquakeData } from './queryEarthquakeData.js';
 
 /**
  * Queries select data based off a user's latitude/longitude and a radius of interest.
