@@ -141,7 +141,7 @@
                 }
             }
         },
-        "/initearthquakes": {
+        "/init-earthquakes": {
             "get": {
                 "summary": "Get earthquake  data",
                 "tags": ["Earthquakes"],
