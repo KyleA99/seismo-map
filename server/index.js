@@ -15,7 +15,6 @@ const swaggerDocument = JSON.parse(fs.readFileSync('./docs/openapi.json', 'utf8'
 // Sets our routes
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/api/earthquakes', earthquakeRoutes);
-app.use('/api/init-earthquakes', earthquakeRoutes);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
