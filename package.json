@@ -19,6 +19,9 @@
     "url": "https://github.com/KyleA99/seismo-map/issues"
   },
   "homepage": "https://github.com/KyleA99/seismo-map#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "dependencies": {
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
