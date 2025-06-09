@@ -3,6 +3,7 @@ import { transformData } from './transformData.js';
 
 /**
  * Queries earthquake data from the USGS endpoint and returns select properties.
+ *
  * @param {Object} params - The query parameters to filter the earthquake data.
  * @returns {Object} - Transformed/filtered earthquake data.
  */
