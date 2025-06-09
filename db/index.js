@@ -13,30 +13,14 @@ const pool = new Pool({
     database: process.env.PGDATABASE,
 });
 
-pool.on('error', (err) => {
-  console.error('Unexpected PostgreSQL error:', err);
+pool.on('error', (error) => {
+  console.error('Unexpected PostgreSQL error:', error);
   process.exit(-1);
 });
 
 
 
-/**
- * Testing/debugging function for confirming we can successfully connect to the PostgreSQL db.
- */
-async function testConnection() {
-    try {
-        const res = await pool.query('SELECT NOW()');
-        console.log('Connected to PostgreSQL database.  Server time is:', res.rows[0].now);
-    } catch (error) {
-        console.error('Connection failed:', error);
-    }
-}
-
-testConnection();
-
-
-
-// Construct query helper
-// export const query = (text, params) => {
-//     return pool.query(text, params)
-// };
+// Construct query helper/utility function
+export const query = (text, params) => {
+    return pool.query(text, params)
+};
