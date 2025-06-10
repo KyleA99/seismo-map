@@ -1,6 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import earthquakeRoutes from './routes/earthquakeRoutes.js';
+import earthquakeRoutes from '../routes/earthquakeRoutes.js';
 import swaggerUi from 'swagger-ui-express';
 import fs from 'fs';
 
@@ -17,5 +17,5 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/api/earthquakes', earthquakeRoutes);
 
 app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
+    console.log(`Listening on port ${port}`);
 });

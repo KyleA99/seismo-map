@@ -241,11 +241,6 @@
                         "type": "number",
                         "description": "Magnitude of the earthquake"
                     },
-                    "time": {
-                        "type": "string",
-                        "format": "date-time",
-                        "description": "Timestamp of the earthquake"
-                    },
                     "location": {
                         "type": "string",
                         "description": "Location description of the earthquake"
@@ -253,6 +248,11 @@
                     "depth": {
                         "type": "number",
                         "description": "Depth of the earthquake in kilometers"
+                    },
+                    "time": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Timestamp of the earthquake"
                     }
                 }
             }
