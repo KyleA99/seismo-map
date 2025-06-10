@@ -1,6 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import earthquakeRoutes from './routes/earthquakeRoutes.js';
+import earthquakeRoutes from '../routes/earthquakeRoutes.js';
 import swaggerUi from 'swagger-ui-express';
 import fs from 'fs';
 
