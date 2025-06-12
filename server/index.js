@@ -4,7 +4,7 @@ import earthquakeRoutes from '../routes/earthquakeRoutes.js';
 import swaggerUi from 'swagger-ui-express';
 import fs from 'fs';
 
-dotenv.config();
+dotenv.config({ path: '.env.development' });
 
 const app = express();
 const port = process.env.PORT || 3000;
