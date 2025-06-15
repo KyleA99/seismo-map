@@ -31,7 +31,7 @@ $ npm start
 ```
 
 This application requires the following modules:
-- [Node.js](https://nodejs.org/en) - at least version >=18.0.0 is required.
+- [Node.js](https://nodejs.org/en) - at least version >=20.11.0 is required.
 
 ## Credits
 
