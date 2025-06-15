@@ -19,7 +19,7 @@ export const up = (pgm) => {
             notNull: true
         },
         magnitude: {
-            type: 'numeric(3, 5)',
+            type: 'numeric(7, 5)',
             notNull: true
         },
         location: {
@@ -27,7 +27,7 @@ export const up = (pgm) => {
             notNull: true
         },
         depth: {
-            type: 'numeric(3, 5)',
+            type: 'numeric(7, 5)',
             notNull: true
         },
         time: {
