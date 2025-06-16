@@ -16,6 +16,17 @@ export const up = (pgm) => {
         },
         id: {
             type: 'varchar(25)',
+            unique: true,
+            notNull: true
+        },
+        latitude: {
+            // max lat is 90.000000
+            type: 'numeric(8, 6)',
+            notNull: true
+        },
+        longitude: {
+            // max lat is 180.000000
+            type: 'numeric(9, 6)',
             notNull: true
         },
         magnitude: {
@@ -34,10 +45,14 @@ export const up = (pgm) => {
             type: 'timestamp',
             notNull: true
         },
-        createdAt: {
+        fetchedAt: {
             type: 'timestamp',
             notNull: true,
             default: pgm.func('current_timestamp'),
+        },
+        rawData: {
+            type: 'json',
+            notNull: true
         },
         earthquakeEn: {
             type: 'boolean',
