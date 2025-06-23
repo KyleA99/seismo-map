@@ -8,19 +8,19 @@ import { transformData } from './transformData.js';
  * @returns {Object} - Transformed/filtered earthquake data.
  */
 export async function fetchEarthquakeData(params = {}) {
+    const baseUrl = "https://earthquake.usgs.gov/fdsnws/event/1/query";
+
+    // Base URL with appended static query parameters
+    let queryString = `${baseUrl}?format=geojson&eventtype=earthquake`;
+
+    // Append optional query params
+    Object.keys(params).forEach(key => {
+        if (params[key]) {
+            queryString += `&${key}=${params[key]}`;
+        }
+    });
+
     try {
-        const baseUrl = "https://earthquake.usgs.gov/fdsnws/event/1/query";
-
-        // Base URL with appended static query parameters
-        let queryString = `${baseUrl}?format=geojson&eventtype=earthquake`;
-
-        // Append optional query params
-        Object.keys(params).forEach(key => {
-            if (params[key]) {
-                queryString += `&${key}=${params[key]}`;
-            }
-        });
-
         const response = await fetch(queryString);
         const data = await response.json();
         const transformedData = transformData(data);

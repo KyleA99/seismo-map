@@ -8,8 +8,9 @@ import { queryInitializeEarthquakeData } from '../services/earthquakes/queryInit
  * @param {import('express').Response} res - The response object.
  */
 export async function getEarthquakeData(req, res) {
+    const params = req.query;
+
     try {
-        const params = req.query;
         const data = await fetchEarthquakeData(params);
         res.json(data);
     } catch (error) {
