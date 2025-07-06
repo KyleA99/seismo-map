@@ -10,7 +10,7 @@ export const shorthands = undefined;
  */
 export const up = (pgm) => {
     pgm.createTable('earthquakes', {
-        earthquakeId: {
+        earthquake_id: {
             type: 'serial',
             primaryKey: true,
         },
@@ -45,16 +45,16 @@ export const up = (pgm) => {
             type: 'timestamp',
             notNull: true
         },
-        fetchedAt: {
+        fetched_at: {
             type: 'timestamp',
             notNull: true,
             default: pgm.func('current_timestamp'),
         },
-        rawData: {
+        raw_data: {
             type: 'json',
             notNull: true
         },
-        earthquakeEn: {
+        earthquake_en: {
             type: 'boolean',
             notNull: true,
             default: true
