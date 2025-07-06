@@ -10,7 +10,8 @@ export async function transformData(data) {
         magnitude: feature.properties.mag,
         location: feature.properties.place,
         depth: feature.geometry.coordinates[2],
-        time: new Date(feature.properties.time).toISOString()
+        time: new Date(feature.properties.time).toISOString(),
+        rawData: data
     }));
 
     return transformedData;
