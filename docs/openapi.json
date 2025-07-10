@@ -139,6 +139,15 @@
                         }
                     }
                 }
+            },
+            "post": {
+                "summary": "Insert earthquake data",
+                "tags": ["Earthquakes"],
+                "responses": {
+                    "201": {
+                        "description": "Successful"
+                    }
+                }
             }
         },
         "/earthquakes/init": {
@@ -236,7 +245,7 @@
                     "id": {
                         "type": "string",
                         "description": "Unique identifier of the earthquake"
-                        },
+                    },
                     "magnitude": {
                         "type": "number",
                         "description": "Magnitude of the earthquake"

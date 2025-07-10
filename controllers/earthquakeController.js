@@ -1,5 +1,5 @@
 import { fetchEarthquakeData } from '../services/earthquakes/queryEarthquakeData.js';
-import { queryInitializeEarthquakeData } from '../services/earthquakes/queryInitializeEarthquakeData.js';
+import { postUSGSData } from '../services/earthquakes/processInitializeEarthquakeData.js';
 
 /**
  * Handles a GET request to fetch USGS earthquake data.
@@ -24,6 +24,28 @@ export async function getEarthquakeData(req, res) {
 
 
 
+// this function can be deleted once the entire init logic is built
+/**
+ * Inserts earthquake data into the "earthquakes" table.
+ *
+ * @param {import('express').Request} req - The request object.
+ * @param {import('express').Response} res - The response object.
+ */
+export async function insertEarthquakeData(req, res) {
+    try {
+        const data = await postUSGSData(req);
+        res.json(data);
+    } catch (error) {
+        console.error('Error inserting earthquake data:', error);
+        res.status(991).json({
+            error: 'Failed to insert earthquake data',
+            details: error.message
+        });
+    }
+}
+
+
+
 /**
  * Handles a GET request to fetch our init data.
  *
@@ -36,7 +58,7 @@ export async function queryInitData(req, res) {
         res.json(data);
     } catch (error) {
         console.error('Error fetching init data:', error);
-        res.status(500).json({
+        res.status(990).json({
             error: 'Failed to fetch earthquake data',
             details: error.message
         });
