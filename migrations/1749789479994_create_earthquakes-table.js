@@ -10,11 +10,11 @@ export const shorthands = undefined;
  */
 export const up = (pgm) => {
     pgm.createTable('earthquakes', {
-        earthquake_id: {
+        id: {
             type: 'serial',
             primaryKey: true,
         },
-        id: {
+        earthquake_id: {
             type: 'varchar(25)',
             unique: true,
             notNull: true
