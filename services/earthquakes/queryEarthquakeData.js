@@ -5,7 +5,7 @@ import { transformData } from "./transformData.js";
  * Queries earthquake data from the USGS endpoint and returns select properties.
  *
  * @param {Object} params - The query parameters to filter the earthquake data.
- * @returns {Object} - Transformed/filtered earthquake data.
+ * @returns {Promise<object>} - Transformed/filtered earthquake data.
  */
 export async function fetchEarthquakeData(params = {}) {
     const baseUrl = "https://earthquake.usgs.gov/fdsnws/event/1/query";

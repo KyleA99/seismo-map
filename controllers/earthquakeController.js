@@ -1,5 +1,5 @@
 import { fetchEarthquakeData } from "../services/earthquakes/queryEarthquakeData.js";
-import { postUSGSData } from "../services/earthquakes/processInitializeEarthquakeData.js";
+import { postUSGSData, queryInitializedEarthquakeData } from "../services/earthquakes/processInitializeEarthquakeData.js";
 
 /**
  * Handles a GET request to fetch USGS earthquake data.
@@ -54,7 +54,7 @@ export async function insertEarthquakeData(req, res) {
  */
 export async function queryInitData(req, res) {
     try {
-        const data = await queryInitializeEarthquakeData(req);
+        const data = await queryInitializedEarthquakeData(req);
         res.json(data);
     } catch (error) {
         console.error("Error fetching init data:", error);

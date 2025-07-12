@@ -1,5 +1,5 @@
 /**
- * @type {import(node-pg-migrate").ColumnDefinitions | undefined}
+ * @type {import("node-pg-migrate").ColumnDefinitions | undefined}
  */
 export const shorthands = undefined;
 
@@ -20,12 +20,10 @@ export const up = (pgm) => {
             notNull: true
         },
         latitude: {
-            // max lat is 90.000000
             type: "numeric(8, 6)",
             notNull: true
         },
         longitude: {
-            // max lat is 180.000000
             type: "numeric(9, 6)",
             notNull: true
         },

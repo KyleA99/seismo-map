@@ -5,9 +5,10 @@ import * as db from "../../db/index.js";
  * Queries select data based off a user's latitude/longitude and a radius of interest.
  *
  * @param {import("express").Request} req - The request object.
- * @returns {Object} Filtered earthquake data for use in webpage initialization.
+ * @param {import("express").Response} res - The response object.
+ * @returns {Promise<object>} Filtered earthquake data for use in webpage initialization.
  */
-async function queryUsgsEarthquakeData(req) {
+async function queryUsgsEarthquakeData(req, res) {
     // pass in lat/long from browser client, for past 30 days, within 5000 km
         // or have a massive query to init db and just have the radius display a subset - this will have slower init/page load but presumably faster queries from db during continued use
     const params = req.query;
@@ -30,10 +31,12 @@ async function queryUsgsEarthquakeData(req) {
 /**
  * Inserts the queried USGS earthquakes data into the earthquakes table.
  *
- * @param {import('express').Request} req - The request object.
- * @return {Object} successfulResponse - Successful message and the count of the inserted rows.
+ * @param {import("express").Request} req - The request object.
+ * @return {Promise<object>} successfulResponse - Successful message and the count of the inserted rows.
  */
 export async function postUSGSData(req) {
+    const parsedData = processBulkData(req);
+
     const insertQuery = {
         text: `
             INSERT INTO earthquakes (
