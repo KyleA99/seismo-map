@@ -1,0 +1,10 @@
+// This file helps with typechecking etc. delete once i upgrade to typescript
+{
+    "compilerOptions": {
+      "checkJs": true
+    },
+    "include":
+    [
+      "./**/*.js"
+    ]
+}
