@@ -1,5 +1,5 @@
-import fetch from 'node-fetch';
-import { transformData } from './transformData.js';
+import fetch from "node-fetch";
+import { transformData } from "./transformData.js";
 
 /**
  * Queries earthquake data from the USGS endpoint and returns select properties.

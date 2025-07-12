@@ -1,7 +1,7 @@
-import pg from 'pg';
-import dotenv from 'dotenv';
+import pg from "pg";
+import dotenv from "dotenv";
 
-dotenv.config({ path: '.env.development' });
+dotenv.config({ path: ".env.development" });
 
 const { Pool } = pg;
 
@@ -13,8 +13,8 @@ const pool = new Pool({
     database: process.env.PGDATABASE,
 });
 
-pool.on('error', (error) => {
-    console.error('Unexpected PostgreSQL error:', error);
+pool.on("error", (error) => {
+    console.error("Unexpected PostgreSQL error:", error);
     process.exit(-1);
 });
 

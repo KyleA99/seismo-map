@@ -1,10 +1,10 @@
-import { fetchEarthquakeData } from './queryEarthquakeData.js';
-import * as db from '../../db/index.js';
+import { fetchEarthquakeData } from "./queryEarthquakeData.js";
+import * as db from "../../db/index.js";
 
 /**
  * Queries select data based off a user's latitude/longitude and a radius of interest.
  *
- * @param {import('express').Request} req - The request object.
+ * @param {import("express").Request} req - The request object.
  * @returns {Object} Filtered earthquake data for use in webpage initialization.
  */
 async function queryUsgsEarthquakeData(req) {
@@ -17,9 +17,9 @@ async function queryUsgsEarthquakeData(req) {
 
         return data;
     } catch (error) {
-        console.error('Error fetching earthquake data:', error);
-        res.status(500).json({
-            error: 'Failed to fetch earthquake data',
+        console.error("Error fetching earthquake data:", error);
+        res.status(600).json({
+            error: "Failed to fetch user's local earthquake data",
             details: error.message
         });
     }
