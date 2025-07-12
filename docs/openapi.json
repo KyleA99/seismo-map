@@ -5,17 +5,20 @@
         "version": "1.0.0",
         "description": "An API for tracking recent earthquake data from the USGS earthquakes API."
     },
-    "servers": [
+    "servers":
+    [
         {
             "url": "http://localhost:4000/api",
             "description": "Local server"
-        }],
+        }
+    ],
     "paths": {
         "/earthquakes": {
             "get": {
                 "summary": "Get recent USGS earthquake data",
                 "tags": ["Earthquakes"],
-                "parameters": [
+                "parameters":
+                [
                     {
                         "name": "starttime",
                         "in": "query",
@@ -114,7 +117,8 @@
                         "required": false,
                         "schema": {
                             "type": "string",
-                            "enum": [
+                            "enum":
+                            [
                                 "time",
                                 "time-asc",
                                 "magnitude",
@@ -143,6 +147,17 @@
             "post": {
                 "summary": "Insert earthquake data",
                 "tags": ["Earthquakes"],
+                "requestBody": {
+                    "description": "User's local data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserLocalData"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "201": {
                         "description": "Successful"
@@ -154,7 +169,8 @@
             "get": {
                 "summary": "Get earthquake  data",
                 "tags": ["Earthquakes"],
-                "parameters": [
+                "parameters":
+                [
                     {
                         "name": "latitude",
                         "in": "query",
@@ -209,7 +225,8 @@
                         "required": false,
                         "schema": {
                             "type": "string",
-                            "enum": [
+                            "enum":
+                            [
                                 "time",
                                 "time-asc",
                                 "magnitude",
@@ -262,6 +279,35 @@
                         "type": "string",
                         "format": "date-time",
                         "description": "Timestamp of the earthquake"
+                    }
+                }
+            },
+            "UserLocalData": {
+                "type": "object",
+                "properties": {
+                    "latitude": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Latitude to be used for a radius search",
+                        "minimum": -90,
+                        "maximum": 90,
+                        "example": 37.7749
+                    },
+                    "longitude": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Longitude to be used for a radius search",
+                        "minimum": -180,
+                        "maximum": 180,
+                        "example": 122.4194
+                    },
+                    "maxradiuskm": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Maximum radius (kilometers) to be used for a radius search",
+                        "minimum": -180,
+                        "maximum": 5000,
+                        "example": 1000
                     }
                 }
             }
