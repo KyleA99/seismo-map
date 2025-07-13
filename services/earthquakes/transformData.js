@@ -11,7 +11,11 @@ export async function transformData(data) {
         location: feature.properties.place,
         depth: feature.geometry.coordinates[2],
         time: new Date(feature.properties.time).toISOString(),
-        rawData: data
+        rawData: {
+            type: data.type,
+            metadata: data.metadata,
+            feature: feature
+        }
     }));
 
     return transformedData;
