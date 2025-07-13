@@ -6,7 +6,9 @@
  */
 export async function transformData(data) {
     const transformedData = data.features.map(feature => ({
-        id: feature.id,
+        earthquake_id: feature.id,
+        latitude: feature.geometry.coordinates[0],
+        longitude: feature.geometry.coordinates[1],
         magnitude: feature.properties.mag,
         location: feature.properties.place,
         depth: feature.geometry.coordinates[2],
