@@ -12,12 +12,14 @@ export async function getEarthquakeData(req, res) {
 
     try {
         const data = await fetchEarthquakeData(params);
-        res.json(data);
+        res.json({ success: true, data });
     } catch (error) {
-        console.error("Error fetching earthquake data:", error);
+        console.error("Controller caught error:", error);
+
         res.status(500).json({
-            error: "Failed to fetch earthquake data",
-            details: error.message
+            success: false,
+            message: error.message || "Internal server error",
+            errorCode: error.errorCode || "INTERNAL_ERROR",
         });
     }
 }
