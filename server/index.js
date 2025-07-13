@@ -9,6 +9,9 @@ dotenv.config({ path: ".env.development" });
 const app = express();
 const port = process.env.PORT || 3000;
 
+// Mount middleware
+app.use(express.json());
+
 // Parses our openapi.json file to generate swagger documentation.
 const swaggerDocument = JSON.parse(fs.readFileSync("./docs/openapi.json", "utf8"));
 
