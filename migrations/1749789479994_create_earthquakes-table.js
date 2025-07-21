@@ -19,12 +19,12 @@ export const up = (pgm) => {
             unique: true,
             notNull: true
         },
-        latitude: {
-            type: "numeric(8, 6)",
+        longitude: {
+            type: "numeric(17, 14)",
             notNull: true
         },
-        longitude: {
-            type: "numeric(9, 6)",
+        latitude: {
+            type: "numeric(16, 14)",
             notNull: true
         },
         magnitude: {
@@ -36,7 +36,7 @@ export const up = (pgm) => {
             notNull: true
         },
         depth: {
-            type: "numeric(7, 5)",
+            type: "numeric(17, 15)",
             notNull: true
         },
         time: {
