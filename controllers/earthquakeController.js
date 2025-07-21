@@ -16,7 +16,7 @@ export async function getEarthquakeData(req, res) {
     } catch (error) {
         console.error("Controller caught error:", error);
 
-        res.status(500).json({
+        return res.status(500).json({
             success: false,
             message: error.message || "Internal server error",
             errorCode: error.errorCode || "INTERNAL_ERROR",
@@ -39,7 +39,8 @@ export async function insertEarthquakeData(req, res) {
         res.json(data);
     } catch (error) {
         console.error("Error posting earthquake data:", error);
-        res.status(991).json({
+
+        return res.status(991).json({
             error: "Failed to post earthquake data",
             details: error.message
         });
@@ -60,7 +61,8 @@ export async function queryInitData(req, res) {
         res.json(data);
     } catch (error) {
         console.error("Error fetching init data:", error);
-        res.status(990).json({
+
+        return res.status(990).json({
             error: "Failed to fetch earthquake data",
             details: error.message
         });
