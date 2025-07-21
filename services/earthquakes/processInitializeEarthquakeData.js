@@ -14,19 +14,20 @@ export async function postUSGSData(req,) {
     const insertQuery = {
         text: `
             INSERT INTO earthquakes (
-            earthquake_id,
-            longitude,
-            latitude,
-            magnitude,
-            location,
-            depth,
-            time,
-            raw_data
+                earthquake_id,
+                longitude,
+                latitude,
+                magnitude,
+                location,
+                depth,
+                time,
+                raw_data
             ) VALUES ${fetchedData.map((_, i) => {
-            const baseIndex = i * 8;
+                const baseIndex = i * 8;
 
-            return `($${baseIndex + 1}, $${baseIndex + 2}, $${baseIndex + 3}, $${baseIndex + 4}, $${baseIndex + 5}, $${baseIndex + 6}, $${baseIndex + 7}, $${baseIndex + 8})`;
+                return `($${baseIndex + 1}, $${baseIndex + 2}, $${baseIndex + 3}, $${baseIndex + 4}, $${baseIndex + 5}, $${baseIndex + 6}, $${baseIndex + 7}, $${baseIndex + 8})`;
             }).join(', ')}
+            ON CONFLICT (earthquake_id) DO NOTHING;
         `,
         values: fetchedData.flatMap(record => [
             record.earthquake_id,
