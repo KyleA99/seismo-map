@@ -52,6 +52,10 @@ export async function postUSGSData(req,) {
         return successfulResponse;
     } catch (error) {
         console.error("Error inserting earthquake data:", error.message);
-        throw error;
+
+        throw new InsertDbError(
+            "Failed to insert USGS data into table.",
+            error
+        );
     }
 }
