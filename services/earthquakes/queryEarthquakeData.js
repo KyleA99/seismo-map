@@ -28,8 +28,9 @@ export async function fetchEarthquakeData(params = {}) {
         return transformedData;
     } catch (error) {
         console.error("Error fetching USGS earthquake data:", error.message);
+
         throw new FetchDataError(
-            "Failed to fetch earthquake data from USGS",
+            "Failed to fetch earthquake data from USGS.",
             error
         );
     }

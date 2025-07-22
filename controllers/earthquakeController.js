@@ -41,7 +41,7 @@ export async function insertEarthquakeData(req, res) {
         console.error("Error posting earthquake data:", error);
 
         return res.status(991).json({
-            error: "Failed to post earthquake data",
+            error: "Failed to post earthquake data.",
             details: error.message
         });
     }
@@ -63,7 +63,7 @@ export async function queryInitData(req, res) {
         console.error("Error fetching init data:", error);
 
         return res.status(990).json({
-            error: "Failed to fetch earthquake data",
+            error: "Failed to fetch earthquake data.",
             details: error.message
         });
     }
