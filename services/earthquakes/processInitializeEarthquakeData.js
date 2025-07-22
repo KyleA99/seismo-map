@@ -1,5 +1,6 @@
+import { query } from "../../db/index.js";
 import { fetchEarthquakeData } from "./queryEarthquakeData.js";
-import * as db from "../../db/index.js";
+import { InsertDbError } from "../../errors/InsertDbError.js"
 
 /**
  * Inserts the queried USGS earthquakes data into the earthquakes table.
@@ -22,8 +23,8 @@ export async function postUSGSData(req,) {
                 depth,
                 time,
                 raw_data
-            ) VALUES ${fetchedData.map((_, i) => {
-                const baseIndex = i * 8;
+            ) VALUES ${fetchedData.map((earthquakeEvent, index) => {
+                const baseIndex = index * 8;
 
                 return `($${baseIndex + 1}, $${baseIndex + 2}, $${baseIndex + 3}, $${baseIndex + 4}, $${baseIndex + 5}, $${baseIndex + 6}, $${baseIndex + 7}, $${baseIndex + 8})`;
             }).join(', ')}
@@ -31,7 +32,6 @@ export async function postUSGSData(req,) {
         `,
         values: fetchedData.flatMap(record => [
             record.earthquake_id,
-            record.longitude,
             record.latitude,
             record.magnitude,
             record.location,
@@ -42,7 +42,7 @@ export async function postUSGSData(req,) {
     };
 
     try {
-        const res = await db.query(insertQuery);
+        const res = await query(insertQuery);
 
         const successfulResponse = {
             "message": "Insert successful",
