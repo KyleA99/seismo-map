@@ -32,6 +32,7 @@ export async function postUSGSData(req,) {
         `,
         values: fetchedData.flatMap(record => [
             record.earthquake_id,
+            record.longitude,
             record.latitude,
             record.magnitude,
             record.location,
