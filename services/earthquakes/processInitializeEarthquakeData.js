@@ -8,7 +8,7 @@ import { InsertDbError } from "../../errors/InsertDbError.js"
  * @param {import("express").Request} req - The request object.
  * @return {Promise<object>} successfulResponse - Successful message and the count of the inserted rows.
  */
-export async function postUSGSData(req,) {
+export async function postUSGSData(req) {
     const params = req.body;
     const fetchedData = await fetchEarthquakeData(params);
 
