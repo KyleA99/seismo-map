@@ -7,7 +7,7 @@ import { postUSGSData, queryInitializedEarthquakeData } from "../services/earthq
  * @param {import("express").Request} req - The request object.
  * @param {import("express").Response} res - The response object.
  */
-export async function getEarthquakeData(req, res) {
+export async function getLiveEarthquakeData(req, res) {
     const params = req.query;
 
     try {
@@ -26,7 +26,6 @@ export async function getEarthquakeData(req, res) {
 
 
 
-// this function can be deleted once the entire init logic is built
 /**
  * Inserts earthquake data into the "earthquakes" table.
  *

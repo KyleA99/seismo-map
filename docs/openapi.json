@@ -13,7 +13,7 @@
         }
     ],
     "paths": {
-        "/earthquakes": {
+        "/earthquakes/live-data": {
             "get": {
                 "summary": "Get recent USGS earthquake data",
                 "tags": ["Earthquakes"],
@@ -143,7 +143,9 @@
                         }
                     }
                 }
-            },
+            }
+        },
+        "/earthquakes": {
             "post": {
                 "summary": "Insert earthquake data",
                 "tags": ["Earthquakes"],
