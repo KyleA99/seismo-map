@@ -1,5 +1,9 @@
 import { fetchEarthquakeData } from "../services/earthquakes/queryEarthquakeData.js";
-import { postUSGSData, queryInitializedEarthquakeData } from "../services/earthquakes/processInitializeEarthquakeData.js";
+import {
+    postUSGSData,
+    queryInitializedEarthquakeData,
+    queryDatabaseRecords
+} from "../services/earthquakes/processInitializeEarthquakeData.js";
 
 /**
  * Handles a GET request to fetch USGS earthquake data.
@@ -16,7 +20,7 @@ export async function getLiveEarthquakeData(req, res) {
     } catch (error) {
         console.error("Controller caught error:", error);
 
-        return res.status(500).json({
+        res.status(500).json({
             success: false,
             message: error.message || "Internal server error",
             errorCode: error.errorCode || "INTERNAL_ERROR",
@@ -39,7 +43,29 @@ export async function insertEarthquakeData(req, res) {
     } catch (error) {
         console.error("Error posting earthquake data:", error);
 
-        return res.status(991).json({
+        res.status(991).json({
+            error: "Failed to post earthquake data.",
+            details: error.message
+        });
+    }
+}
+
+
+
+/**
+ * Queries earthquake data from the "earthquakes" table.
+ *
+ * @param {import("express").Request} req - The request object.
+ * @param {import("express").Response} res - The response object.
+ */
+export async function queryStoredData(req, res) {
+    try {
+        const data = await queryDatabaseRecords(req);
+        res.json(data);
+    } catch (error) {
+        console.error("Error querying earthquake data:", error);
+
+        res.status(992).json({
             error: "Failed to post earthquake data.",
             details: error.message
         });
@@ -61,7 +87,7 @@ export async function queryInitData(req, res) {
     } catch (error) {
         console.error("Error fetching init data:", error);
 
-        return res.status(990).json({
+        res.status(990).json({
             error: "Failed to fetch earthquake data.",
             details: error.message
         });
