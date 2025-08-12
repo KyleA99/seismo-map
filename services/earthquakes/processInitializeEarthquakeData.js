@@ -1,6 +1,7 @@
 import { query } from "../../db/index.js";
 import { fetchEarthquakeData } from "./queryEarthquakeData.js";
-import { InsertDbError } from "../../errors/InsertDbError.js"
+import { InsertDbError } from "../../errors/InsertDbError.js";
+import { QueryDbError } from "../../errors/QueryDbError.js";
 
 /**
  * Inserts the queried USGS earthquakes data into the earthquakes table.

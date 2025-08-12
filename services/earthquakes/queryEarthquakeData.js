@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 import { transformData } from "./transformData.js";
-import { FetchDataError } from "../../errors/FetchDataError.js"
+import { FetchDataError } from "../../errors/FetchDataError.js";
 
 /**
  * Queries earthquake data from the USGS endpoint and returns select properties.
