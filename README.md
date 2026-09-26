@@ -18,7 +18,7 @@ SeismoMap is built with:
 - [![PostgreSQL][PostgreSQL-badge]][PostgreSQL-url]
 - [![React][React.js]][React-url]
 
-## Quickstart
+## Quick Start
 
 ```bash
 # Clone this repository to your local machine
